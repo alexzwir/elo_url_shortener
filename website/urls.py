@@ -21,5 +21,5 @@ from website.core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('/elo_url_shortener', views.elo_url_shortener, name='elo_url_shortener')
+    path('elo_url_shortener', views.elo_url_shortener, name='elo_url_shortener')
 ]
