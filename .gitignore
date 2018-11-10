@@ -10,7 +10,10 @@ db.sqlite3
 pyshorteners
 tests
 docs
-
+Makefile
+example.py
+setup.cfg
+setup.py
 
 
 
