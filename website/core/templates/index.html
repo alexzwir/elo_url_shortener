@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Elo - Gerador de URL</h1>
+    <div>
+    
+        <div>
+            <p>1. Escolha o link que você quer fazer a ação:</p>
+            <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/"> Hub Use Elo<br>
+            <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/bradesco/"> Hub Use Elo - Bradesco<br>
+            <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/banco-do-brasil/"> Hub Use Elo - Banco do Brasil<br>
+            <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/caixa/"> Hub Use Elo - Caixa<br>
+            <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/pernambucanas/"> Hub Use Elo - Pernambucanas<br>
+            <input id="url-inicial" type="radio" name="url-inicial" value="https://elo.com.br/"> Site Elo<br>
+        </div>
+        <div>
+            <p>2. Essa ação será divulgada por quem?</p>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorBradesco"> Bradesco<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorBancodoBrasil"> Banco do Brasil<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorCaixa"> Caixa<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorPernambucanas"> Pernambucanas<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=Google"> Google<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=Facebook"> Facebook<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=SMS"> SMS<br>
+            <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmailMarketing"> Email Marketing<br>
+        </div>
+            <p>3.Escreva o formato que será usado.</p>
+            <p><small><strong>*Lembre-se de escrever tudo em minuscula.</strong></small></p>
+            <input id="utm-medium" type="text" name="utm-medium" value="">
+        </div>
+        
+        <div>
+            <button id="gerar-url">Gerar URL</button>
+        </div>
+        
+        <div>
+            <div id="url-final-div">
+                <p>URL final: <span id="url-final"></span></p>
+            </div>
+            <div id="url-shorten-form">
+                <form id="elo_url_shortener_form" action="elo_url_shortener" method="POST" data-url="elo_url_shortener" >{% csrf_token %}
+                    <p>Deseja encurtar a URL? Use o encurtador abaixo:</p>
+                    {{ form_elo_url_to_be_shorten.elo_url_to_be_shorten }}
+                    <button id="shorten-button" type='submit'>Encurtar URL</button>
+                </form>
+            </div>
+            <div id="final-elo-shorten-url">
+                <p>A url encurtada é:<span id="final-elo-shorten-url-span"></span></p>
+            </div>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+
+            $("#url-final-div").hide();
+            $("#url-shorten-form").hide();
+            $("#final-elo-shorten-url").hide();
+
+            $("#gerar-url").click(function() {
+                $("#url-final-div").show();
+                $("#url-shorten-form").show();
+
+                var url_inicial = $("input[name='url-inicial']:checked").val();
+                var utm_source = $("input[name='utm-source']:checked").val();
+                var utm_medium_raw = $("#utm-medium").val();
+                var utm_medium = "&utm_medium="+ utm_medium_raw;
+                var url_parcial = url_inicial+utm_source+utm_medium;
+                
+                $("#url-final").text(url_parcial);
+                $("#url_parcial_input").val(url_parcial);
+
+            });
+
+            $("#shorten-button").click(function() {
+                var $myForm = $("#elo_url_shortener_form");
+                $($myForm).submit(function(event){
+                    event.preventDefault();
+                    var $formData = $(this).serialize();
+                    var $thisURL = $myForm.attr('data-url') || window.location.href;
+                    // console.log($formData);
+                    // console.log($thisURL);
+                    $.ajax({
+                        method:"POST",
+                        url: $thisURL , 
+                        data:$formData,
+                        success: handleFormSuccess,
+                        error:handleFormError
+                    });
+                });
+            });
+
+            function handleFormSuccess(data, textStatus, jqXHR){
+                $('#final-elo-shorten-url').show()
+                $('#final-elo-shorten-url-span').text(data)
+                // console.log(data);
+                // console.log(textStatus);
+                // console.log(jqXHR);
+                //$(".appointment-form-fields").hide();
+                //$("#appointment_form").attr("style","height:513px");
+                //$(".success-message").fadeIn();
+                //$myForm[0].reset(); // reset form data
+            }
+
+            function handleFormError(jqXHR, textStatus, errorThrown){
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+
+        });
+            
+        
+
+            
+    </script>
+
+
+
+
+</body>
+</html>
