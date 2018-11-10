@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.idea 
+.elo_shorten_url
+*.sqlite
+*pyc 
+__pycache__
+.vscode/
+db.sqlite3
+pyshorteners
+tests
