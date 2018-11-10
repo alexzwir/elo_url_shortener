@@ -45,7 +45,7 @@
                 <p>URL final: <span id="url-final"></span></p>
             </div>
             <div id="url-shorten-form">
-                <form id="elo_url_shortener_form" action="elo_url_shortener" method="POST" data-url="elo_url_shortener" >{% csrf_token %}
+                <form id="elo_url_shortener_form" action="/elo_url_shortener" method="POST" data-url="/elo_url_shortener" >{% csrf_token %}
                     <p>Deseja encurtar a URL? Use o encurtador abaixo:</p>
                     {{ form_elo_url_to_be_shorten.elo_url_to_be_shorten }}
                     <button id="shorten-button" type='submit'>Encurtar URL</button>
