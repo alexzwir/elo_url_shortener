@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
-    <!--CSS Importing-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!--JS Importing-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <title>Encurtador Elo</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>Elo - Gerador de URL</h1>
         <div>
         
             <div>
                 <p>1. Escolha o link que você quer fazer a ação:</p>
+                <div> 
+                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                    <label class="custom-control-label" for="credit">Credit card</label>
+                </div>
                 <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/"> Hub Use Elo<br>
                 <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/bradesco/"> Hub Use Elo - Bradesco<br>
                 <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/banco-do-brasil/"> Hub Use Elo - Banco do Brasil<br>
@@ -59,71 +61,75 @@
                         <button id="shorten-button" type='submit'>Encurtar URL</button>
                     </form>
                 </div>
-                <div id="final-elo-shorten-url">
-                    <p>A url encurtada é:<span id="final-elo-shorten-url-span"></span></p>
+                <div id="final-elo-shorten-url" class="alert alert-dark" role="alert">
+                    <p>A url encurtada é: <a href="" id="final-elo-shorten-url-span" class="alert-link"></a></p>
                 </div>
         </div>
-        
-        <script>
-            $(document).ready(function(){
+    </div>
+    
+    <script>
+        $(document).ready(function(){
 
-                $("#url-final-div").hide();
-                $("#url-shorten-form").hide();
-                $("#final-elo-shorten-url").hide();
+            $("#url-final-div").hide();
+            $("#url-shorten-form").hide();
+            $("#final-elo-shorten-url").hide();
 
-                $("#gerar-url").click(function() {
-                    $("#url-final-div").show();
-                    $("#url-shorten-form").show();
+            $("#gerar-url").click(function() {
+                $("#url-final-div").show();
+                $("#url-shorten-form").show();
 
-                    var url_inicial = $("input[name='url-inicial']:checked").val();
-                    var utm_source = $("input[name='utm-source']:checked").val();
-                    var utm_medium_raw = $("#utm-medium").val();
-                    var utm_medium = "&utm_medium="+ utm_medium_raw;
-                    var url_parcial = url_inicial+utm_source+utm_medium;
-                    
-                    $("#url-final").text(url_parcial);
-                    $("#url_parcial_input").val(url_parcial);
-
-                });
-
-                $("#shorten-button").click(function() {
-                    var $myForm = $("#elo_url_shortener_form");
-                    $($myForm).submit(function(event){
-                        event.preventDefault();
-                        var $formData = $(this).serialize();
-                        var $thisURL = $myForm.attr('data-url') || window.location.href;
-                        // console.log($formData);
-                        // console.log($thisURL);
-                        $.ajax({
-                            method:"POST",
-                            url: $thisURL , 
-                            data:$formData,
-                            success: handleFormSuccess,
-                            error:handleFormError
-                        });
-                    });
-                });
-
-                function handleFormSuccess(data, textStatus, jqXHR){
-                    $('#final-elo-shorten-url').show()
-                    $('#final-elo-shorten-url-span').text(data)
-                    // console.log(data);
-                    // console.log(textStatus);
-                    // console.log(jqXHR);
-                    //$(".appointment-form-fields").hide();
-                    //$("#appointment_form").attr("style","height:513px");
-                    //$(".success-message").fadeIn();
-                    //$myForm[0].reset(); // reset form data
-                }
-
-                function handleFormError(jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                }
+                var url_inicial = $("input[name='url-inicial']:checked").val();
+                var utm_source = $("input[name='utm-source']:checked").val();
+                var utm_medium_raw = $("#utm-medium").val();
+                var utm_medium = "&utm_medium="+ utm_medium_raw;
+                var url_parcial = url_inicial+utm_source+utm_medium;
+                
+                $("#url-final").text(url_parcial);
+                $("#url_parcial_input").val(url_parcial);
 
             });
-        </script>
-    </div>
+
+            $("#shorten-button").click(function() {
+                var $myForm = $("#elo_url_shortener_form");
+                $($myForm).submit(function(event){
+                    event.preventDefault();
+                    var $formData = $(this).serialize();
+                    var $thisURL = $myForm.attr('data-url') || window.location.href;
+                    // console.log($formData);
+                    // console.log($thisURL);
+                    $.ajax({
+                        method:"POST",
+                        url: $thisURL , 
+                        data:$formData,
+                        success: handleFormSuccess,
+                        error:handleFormError
+                    });
+                });
+            });
+
+            function handleFormSuccess(data, textStatus, jqXHR){
+                $('#final-elo-shorten-url').show()
+                $('#final-elo-shorten-url-span').text(data)
+                // console.log(data);
+                // console.log(textStatus);
+                // console.log(jqXHR);
+                //$(".appointment-form-fields").hide();
+                //$("#appointment_form").attr("style","height:513px");
+                //$(".success-message").fadeIn();
+                //$myForm[0].reset(); // reset form data
+            }
+
+            function handleFormError(jqXHR, textStatus, errorThrown){
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+
+        });
+                    
+    </script>
+
+
+
 </body>
 </html>
