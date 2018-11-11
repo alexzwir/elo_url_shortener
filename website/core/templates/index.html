@@ -11,62 +11,149 @@
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
-<body>
+<body class=bd-light>
     <div class="container">
-        <h1>Elo - Gerador de URL</h1>
-        <div>
-        
-            <div>
-                <p>1. Escolha o link que você quer fazer a ação:</p>
-                <div> 
-                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                    <label class="custom-control-label" for="credit">Credit card</label>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="/static/logo.svg" alt="" width="72" height="72">
+            <h1>URL Builder</h1>
+            <p class="lead">Ferramenta para geração de links trackeados (com UTM's) para Google Analytics e encurtador via Bit.ly. Siga o passo a passo abaixo:</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-10 mb-3">
+                    <h3>Escolha a página que você deseja fazer a ação:</h3>
+                    <div class="custom-control custom-radio">
+                        <input id="site-use-elo" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://use.elo.com.br/">
+                        <label class="custom-control-label" for="site-use-elo">Site Use Elo</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="site-use-elo-bradesco" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://use.elo.com.br/bradesco/">
+                        <label class="custom-control-label" for="site-use-elo-bradesco">Site Use Elo - Bradesco</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="site-use-elo-banco-do-brasil" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://use.elo.com.br/banco-do-brasil/">
+                        <label class="custom-control-label" for="site-use-elo-banco-do-brasil">Site Use Elo - Banco do Brasil</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="site-use-elo-caixa" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://use.elo.com.br/caixa/">
+                        <label class="custom-control-label" for="site-use-elo-caixa">Site Use Elo - Caixa</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="site-use-elo-pernambucanas" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://use.elo.com.br/pernambucanas/">
+                        <label class="custom-control-label" for="site-use-elo-pernambucanas">Site Use Elo - Pernambucanas</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="site-elo" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://elo.com.br/">
+                        <label class="custom-control-label" for="site-elo">Site Elo</label>
+                    </div>
                 </div>
-                <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/"> Hub Use Elo<br>
-                <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/bradesco/"> Hub Use Elo - Bradesco<br>
-                <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/banco-do-brasil/"> Hub Use Elo - Banco do Brasil<br>
-                <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/caixa/"> Hub Use Elo - Caixa<br>
-                <input id="url-inicial" type="radio" name="url-inicial" value="https://use.elo.com.br/pernambucanas/"> Hub Use Elo - Pernambucanas<br>
-                <input id="url-inicial" type="radio" name="url-inicial" value="https://elo.com.br/"> Site Elo<br>
             </div>
-            <div>
-                <p>2. Essa ação será divulgada por quem?</p>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorBradesco"> Bradesco<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorBancodoBrasil"> Banco do Brasil<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorCaixa"> Caixa<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmissorPernambucanas"> Pernambucanas<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=Google"> Google<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=Facebook"> Facebook<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=SMS"> SMS<br>
-                <input id="utm-source" type="radio" name="utm-source" value="?utm_source=EmailMarketing"> Email Marketing<br>
-            </div>
-                <p>3.Escreva o formato que será usado.</p>
-                <p><small><strong>*Lembre-se de escrever tudo em minuscula.</strong></small></p>
-                <input id="utm-medium" type="text" name="utm-medium" value="">
-            </div>
-            
-            <div>
-                <button id="gerar-url">Gerar URL</button>
-            </div>
-            
-            <div>
-                <div id="url-final-div">
-                    <p>URL final: <span id="url-final"></span></p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-10 mb-3">
+                    <h3>Por quem será divulgada essa ação?</h3>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-bradesco" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorBradesco">
+                        <label class="custom-control-label" for="utm-source-bradesco">Bradesco</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-banco-do-brasil" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorBancodoBrasil">
+                        <label class="custom-control-label" for="utm-source-banco-do-brasil">Banco do Brasil</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-caixa" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorCaixa">
+                        <label class="custom-control-label" for="utm-source-caixa">Caixa</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-pernambucanas" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorPernambucanas">
+                        <label class="custom-control-label" for="utm-source-pernambucanas">Pernambucanas</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-google" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=Google">
+                        <label class="custom-control-label" for="utm-source-google">Google</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-facebook" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=Facebook">
+                        <label class="custom-control-label" for="utm-source-facebook">Facebook</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-sms" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=SMS">
+                        <label class="custom-control-label" for="utm-source-sms">SMS</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-emailmarketing" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmailMarketing">
+                        <label class="custom-control-label" for="utm-source-emailmarketing">Email Marketing</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="utm-source-smartmessage" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=SmartMessage">
+                        <label class="custom-control-label" for="utm-source-smartmessage">Smart Message</label>
+                    </div>
                 </div>
-                <div id="url-shorten-form">
-                    <form id="elo_url_shortener_form" action="/elo_url_shortener" method="POST" data-url="/elo_url_shortener" >{% csrf_token %}
-                        <p>Deseja encurtar a URL? Use o encurtador abaixo:</p>
-                        {{ form_elo_url_to_be_shorten.elo_url_to_be_shorten }}
-                        <button id="shorten-button" type='submit'>Encurtar URL</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-10 mb-3">
+                    <h3>Qual formato que será usado?</h3>
+                    <label for="utm-medium">Ex: Display, Internet Banking, Intranet.... <span class="text-muted">(Lembre-se de escrever o texto todo junto e em letras minúsculas)</span></label>
+                    <input type="text" class="form-control" id="utm-medium" placeholder="Ex: internetbanking, display, intranet, ...." name="utm-medium">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-10 mb-3">
+                    <hr class="mb-4">    
+                </div>
+            </div>
+        </div>
+        <div class="row  mb-3">   
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-lg btn-block" id="gerar-url" type="submit">Gerar URL</button>
+            </div>
+        </div>
+        <div class="row"> 
+            <div class="col-md-10  mb-3">
+                <div id="url-final-div" class="alert alert-dark mb-3">
+                    <p>A URL final é: <a class="alert-link" id="url-final"></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-10 mb-3">
+                    <hr class="mb-4">    
+                </div>
+            </div>
+        </div>
+        <div class="row"> 
+            <div class="col-md-10  mb-3">
+                <div id="url-shorten-form" class="mb-3">
+                    <form id="elo_url_shortener_form" class="mb-3" action="/elo_url_shortener" method="POST" data-url="/elo_url_shortener" >{% csrf_token %}
+                        <h4>Deseja encurtar a URL? Clique abaixo:</h4>
+                        <div class="input-group">
+                            {{ form_elo_url_to_be_shorten.elo_url_to_be_shorten }}
+                            <div class="input-group-append">
+                                <button type="submit" id="shorten-button" class="btn btn-secondary">Encurtar URL</button>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
                 <div id="final-elo-shorten-url" class="alert alert-dark" role="alert">
-                    <p>A url encurtada é: <a href="" id="final-elo-shorten-url-span" class="alert-link"></a></p>
+                    <p>A url encurtada é: <a id="final-elo-shorten-url-span" class="alert-link"></a></p>
+                    <p><strong>Lembre-se de testar a URL antes de enviar para o parceiro.</strong></p>
                 </div>
+            </div>
         </div>
     </div>
     
+    
+
+
     <script>
         $(document).ready(function(){
 
