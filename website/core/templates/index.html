@@ -214,50 +214,57 @@
                     $("#url-final-div").show();
                     $("#url-shorten-form").show();
                     
-                    //Checando o valor da ultima letra da url para inserir ou o & ou o ?
-                    ultima_letra_url_inicial_alternativa=url_inicial_alternativa.slice(-1);
-                    numero_ou_ultima_letra_url_inicial_alternativa = Number(ultima_letra_url_inicial_alternativa)
-                    
-                    if(Number.isInteger(numero_ou_ultima_letra_url_inicial_alternativa)){
-                        url_inicial_alternativa = url_inicial_alternativa+"&";
-                        console.log(url_inicial_alternativa)
-                        
-                    }
-                    else{
-                        url_inicial_alternativa  = url_inicial_alternativa+"?";
-                        console.log(url_inicial_alternativa)
-                    }
-                    
+                    console.log("Comecou os condicionais para a geracao da URL")
                     //Por ser um campo aberto, caso a UTM_MEDIUM não tenha conteúdo, excluimos essa variavel da concatenacao
                     if(utm_medium.length == 0){
+                        console.log("Entrou no condicional de Sem UTM");
                         if(url_inicial_alternativa.length==0){
-                            $(".message-utm-medium").show();     
+                            console.log("Entrou no condicional de nao ter url Alternativa");
                             var url_parcial = url_inicial+"?"+utm_source;
-                            console.log("Url parcial sem UTM Medium "+ url_parcial );
+                            $(".message-utm-medium").show(); 
                             $("#url-final").text(url_parcial);
                             $("#url_parcial_input").val(url_parcial);
-                        }
-                        else if(url_inicial  == undefined && url_inicial_alternativa.length !=0 ){
+                            
+                        } else{
+                            console.log("entrou no condicional de url alternativa")
+                            //Checando o valor da ultima letra da url para inserir ou o & ou o ?
+                            ultima_letra_url_inicial_alternativa=url_inicial_alternativa.slice(-1);
+                            numero_ou_ultima_letra_url_inicial_alternativa = Number(ultima_letra_url_inicial_alternativa)
+                            console.log(numero_ou_ultima_letra_url_inicial_alternativa);
+                            if(Number.isInteger(numero_ou_ultima_letra_url_inicial_alternativa)){
+                                var url_parcial = url_inicial_alternativa+"&"+utm_source;
+                            }
+                            else{
+                                var url_parcial  = url_inicial_alternativa+"?"+utm_source;
+                            }
                             $(".message-utm-medium").show();
-                            var url_parcial = url_inicial_alternativa+utm_source;
                             $("#url-final").text(url_parcial);
-                            $("#url_parcial_input").val(url_parcial);
+                            $("#url_parcial_input").val(url_parcial);   
                         }     
                     } else{
                         if(url_inicial_alternativa.length==0){
                             //Se tiver conteúddo, atribuimos o valor dos campos a variaveis
                             //Concatenamos os valores para formar um string e mostramos o resultado
-                            console.log("Url parcial com UTM Medium"+url_parcial );
                             var utm_medium = "&utm_medium="+ utm_medium;
                             var url_parcial = url_inicial+"?"+utm_source+utm_medium;
                             $("#url-final").text(url_parcial);
                             $("#url_parcial_input").val(url_parcial);
                         }
                         else{
+                            
                             var utm_medium = "&utm_medium="+ utm_medium;
-                            var url_parcial = url_inicial_alternativa+utm_source+utm_medium;
+                            //Checando o valor da ultima letra da url para inserir ou o & ou o ?
+                            ultima_letra_url_inicial_alternativa=url_inicial_alternativa.slice(-1);
+                            numero_ou_ultima_letra_url_inicial_alternativa = Number(ultima_letra_url_inicial_alternativa)
+                            if(Number.isInteger(numero_ou_ultima_letra_url_inicial_alternativa)){
+                                var url_parcial = url_inicial_alternativa+"&"+utm_source+utm_medium;
+                            }
+                            else{
+                                var url_parcial  = url_inicial_alternativa+"?"+utm_source+utm_medium;
+                            }  
+                            $(".message-utm-medium").show();
                             $("#url-final").text(url_parcial);
-                            $("#url_parcial_input").val(url_parcial);
+                            $("#url_parcial_input").val(url_parcial);       
                         }
                     }   
                 }
