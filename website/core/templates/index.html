@@ -22,6 +22,9 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-danger message-url-inicial" role="alert">
+                    Prencha os campos de maneira adequada! Escolha a URL que você deseja direcionar a ação ou preencha o campo de URL.
+                </div>
                 <div class="col-md-10 mb-3">
                     <h3>Escolha a página que você deseja fazer a ação:</h3>
                     <div class="custom-control custom-radio">
@@ -48,47 +51,56 @@
                         <input id="site-elo" name="url-inicial" type="radio" class="custom-control-input" required="" value="https://elo.com.br/">
                         <label class="custom-control-label" for="site-elo">Site Elo</label>
                     </div>
+                    <div class="col-md-10 mb-3">
+                        <br>
+                        <h5>Ou insira a página do site que deseja fazer a ação. </h5>
+                        <label for="url-inicial-alternativa">Pode ser uma página de oferta ou produtos. <span class="text-muted">(Lembre-se copiar a URL completa)</span></label>
+                        <input type="text" class="form-control" id="url-inicial-alternativa" value="" placeholder="Ex:https://elo.com.br/eloofertas/oferta.html?id=101405" name="url-inicial-alternativa">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-danger message-utm-source" role="alert">
+                    Prencha os campos de maneira adequada! Por quem será divulgada a ação?
+                </div>
                 <div class="col-md-10 mb-3">
                     <h3>Por quem será divulgada essa ação?</h3>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-bradesco" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorBradesco">
+                        <input id="utm-source-bradesco" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=EmissorBradesco">
                         <label class="custom-control-label" for="utm-source-bradesco">Bradesco</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-banco-do-brasil" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorBancodoBrasil">
+                        <input id="utm-source-banco-do-brasil" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=EmissorBancodoBrasil">
                         <label class="custom-control-label" for="utm-source-banco-do-brasil">Banco do Brasil</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-caixa" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorCaixa">
+                        <input id="utm-source-caixa" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=EmissorCaixa">
                         <label class="custom-control-label" for="utm-source-caixa">Caixa</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-pernambucanas" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmissorPernambucanas">
+                        <input id="utm-source-pernambucanas" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=EmissorPernambucanas">
                         <label class="custom-control-label" for="utm-source-pernambucanas">Pernambucanas</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-google" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=Google">
+                        <input id="utm-source-google" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=Google">
                         <label class="custom-control-label" for="utm-source-google">Google</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-facebook" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=Facebook">
+                        <input id="utm-source-facebook" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=Facebook">
                         <label class="custom-control-label" for="utm-source-facebook">Facebook</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-sms" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=SMS">
+                        <input id="utm-source-sms" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=SMS">
                         <label class="custom-control-label" for="utm-source-sms">SMS</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-emailmarketing" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=EmailMarketing">
+                        <input id="utm-source-emailmarketing" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=EmailMarketing">
                         <label class="custom-control-label" for="utm-source-emailmarketing">Email Marketing</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input id="utm-source-smartmessage" name="utm-source" type="radio" class="custom-control-input" required="" value="?utm_source=SmartMessage">
+                        <input id="utm-source-smartmessage" name="utm-source" type="radio" class="custom-control-input" required="" value="utm_source=SmartMessage">
                         <label class="custom-control-label" for="utm-source-smartmessage">Smart Message</label>
                     </div>
                 </div>
@@ -98,8 +110,12 @@
             <div class="col-md-12">
                 <div class="col-md-10 mb-3">
                     <h3>Qual formato que será usado?</h3>
+                    <p>Campo não obrigatório.</p>
                     <label for="utm-medium">Ex: Display, Internet Banking, Intranet.... <span class="text-muted">(Lembre-se de escrever o texto todo junto e em letras minúsculas)</span></label>
-                    <input type="text" class="form-control" id="utm-medium" placeholder="Ex: internetbanking, display, intranet, ...." name="utm-medium">
+                    <input type="text" class="form-control" id="utm-medium" value="" placeholder="Ex: internetbanking, display, intranet, ...." name="utm-medium">
+                </div>
+                <div class="alert alert-dark message-utm-source" role="alert">
+                    Você nao preencheu nenhuma informação de qual será o tipo de mídia utilizada. Apesar de opcional, esse campo é muito importante para nossas mensurações.
                 </div>
             </div>
         </div>
@@ -110,15 +126,17 @@
                 </div>
             </div>
         </div>
-        <div class="row  mb-3">   
-            <div class="col-md-6">
-                <button class="btn btn-primary btn-lg btn-block" id="gerar-url" type="submit">Gerar URL</button>
+        <div class="row  mb-3 justify-content-center">   
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-lg btn-block" id="gerar-url" type="submit">Gerar URL</button>   
             </div>
         </div>
         <div class="row"> 
-            <div class="col-md-10  mb-3">
-                <div id="url-final-div" class="alert alert-dark mb-3">
-                    <p>A URL final é: <a class="alert-link" id="url-final"></a></p>
+            <div class="col-md-12">
+                <div class="col-md-10  mb-3">
+                    <div id="url-final-div" class="alert alert-success mb-3">
+                        <p>A URL final é: <a class="alert-link" id="url-final"></a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,47 +161,114 @@
 
                     </form>
                 </div>
-                <div id="final-elo-shorten-url" class="alert alert-dark" role="alert">
+                <div id="final-elo-shorten-url" class="alert alert-success" role="alert">
                     <p>A url encurtada é: <a id="final-elo-shorten-url-span" class="alert-link"></a></p>
                     <p><strong>Lembre-se de testar a URL antes de enviar para o parceiro.</strong></p>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="/static/logo.svg" alt="" width="72" height="72">
+            <p>URL Builder</p>
+            <p class="lead"></p>
+            <span class="text-muted">Qualquer dúvida, entre em contato com digital@elo.com.br</span>
+        </div>
+    </div>
     
-    
-
-
     <script>
         $(document).ready(function(){
+            
+            //Ao carregar o DOM e escondemos as divs:
+            $("#url-final-div").hide();//1-) Da URL Final
+            $("#url-shorten-form").hide();//2-)O Form para criar a url encurtada
+            $("#final-elo-shorten-url").hide();//3-) A DIV que terá URL final encurtada
+            $(".message-url-inicial").hide();//4-) A mensagem de erro da URL_INICIAL
+            $(".message-utm-source").hide();//5-) A mensagem de erro da UTM_SOURCE
+            $(".message-utm-medium").hide();//6-) A mensagem de erro da UTM_MEDIUM
 
-            $("#url-final-div").hide();
-            $("#url-shorten-form").hide();
-            $("#final-elo-shorten-url").hide();
-
+            //No click do primeiro botão de geral url parametrizada:
             $("#gerar-url").click(function() {
-                $("#url-final-div").show();
-                $("#url-shorten-form").show();
-
+                //Validamos se os campos contem conteúdo.
                 var url_inicial = $("input[name='url-inicial']:checked").val();
+                var url_inicial_alternativa = $("#url-inicial-alternativa").val();
                 var utm_source = $("input[name='utm-source']:checked").val();
-                var utm_medium_raw = $("#utm-medium").val();
-                var utm_medium = "&utm_medium="+ utm_medium_raw;
-                var url_parcial = url_inicial+utm_source+utm_medium;
-                
-                $("#url-final").text(url_parcial);
-                $("#url_parcial_input").val(url_parcial);
-
+                if (url_inicial  == undefined && utm_source == undefined && url_inicial_alternativa.length == 0){
+                    $(".message-url-inicial").show();
+                    $(".message-utm-source").show();
+                } else if(url_inicial  == undefined && url_inicial_alternativa.length == 0){
+                    $(".message-url-inicial").show();
+                    $(".message-utm-source").hide();
+                }
+                else if(utm_source == undefined){
+                    $(".message-url-inicial").hide();
+                    $(".message-utm-source").show();
+                }
+                else{
+                    $(".message-url-inicial").hide();
+                    $(".message-utm-source").hide();
+                    //Atribui o valor da UTM medium
+                    var utm_medium = $("#utm-medium").val();
+                    //Mostamos as div e form para encurtamento.
+                    $("#url-final-div").show();
+                    $("#url-shorten-form").show();
+                    
+                    //Checando o valor da ultima letra da url para inserir ou o & ou o ?
+                    ultima_letra_url_inicial_alternativa=url_inicial_alternativa.slice(-1);
+                    numero_ou_ultima_letra_url_inicial_alternativa = Number(ultima_letra_url_inicial_alternativa)
+                    
+                    if(Number.isInteger(numero_ou_ultima_letra_url_inicial_alternativa)){
+                        url_inicial_alternativa = url_inicial_alternativa+"&";
+                        console.log(url_inicial_alternativa)
+                        
+                    }
+                    else{
+                        url_inicial_alternativa  = url_inicial_alternativa+"?";
+                        console.log(url_inicial_alternativa)
+                    }
+                    
+                    //Por ser um campo aberto, caso a UTM_MEDIUM não tenha conteúdo, excluimos essa variavel da concatenacao
+                    if(utm_medium.length == 0){
+                        if(url_inicial_alternativa.length==0){
+                            $(".message-utm-medium").show();     
+                            var url_parcial = url_inicial+"?"+utm_source;
+                            console.log("Url parcial sem UTM Medium "+ url_parcial );
+                            $("#url-final").text(url_parcial);
+                            $("#url_parcial_input").val(url_parcial);
+                        }
+                        else if(url_inicial  == undefined && url_inicial_alternativa.length !=0 ){
+                            $(".message-utm-medium").show();
+                            var url_parcial = url_inicial_alternativa+utm_source;
+                            $("#url-final").text(url_parcial);
+                            $("#url_parcial_input").val(url_parcial);
+                        }     
+                    } else{
+                        if(url_inicial_alternativa.length==0){
+                            //Se tiver conteúddo, atribuimos o valor dos campos a variaveis
+                            //Concatenamos os valores para formar um string e mostramos o resultado
+                            console.log("Url parcial com UTM Medium"+url_parcial );
+                            var utm_medium = "&utm_medium="+ utm_medium;
+                            var url_parcial = url_inicial+"?"+utm_source+utm_medium;
+                            $("#url-final").text(url_parcial);
+                            $("#url_parcial_input").val(url_parcial);
+                        }
+                        else{
+                            var utm_medium = "&utm_medium="+ utm_medium;
+                            var url_parcial = url_inicial_alternativa+utm_source+utm_medium;
+                            $("#url-final").text(url_parcial);
+                            $("#url_parcial_input").val(url_parcial);
+                        }
+                    }   
+                }
             });
-
+                
             $("#shorten-button").click(function() {
                 var $myForm = $("#elo_url_shortener_form");
                 $($myForm).submit(function(event){
                     event.preventDefault();
                     var $formData = $(this).serialize();
                     var $thisURL = $myForm.attr('data-url') || window.location.href;
-                    // console.log($formData);
-                    // console.log($thisURL);
                     $.ajax({
                         method:"POST",
                         url: $thisURL , 
@@ -195,15 +280,12 @@
             });
 
             function handleFormSuccess(data, textStatus, jqXHR){
-                $('#final-elo-shorten-url').show()
-                $('#final-elo-shorten-url-span').text(data)
-                // console.log(data);
-                // console.log(textStatus);
-                // console.log(jqXHR);
-                //$(".appointment-form-fields").hide();
-                //$("#appointment_form").attr("style","height:513px");
-                //$(".success-message").fadeIn();
-                //$myForm[0].reset(); // reset form data
+                $("#loading-gif").show();
+                $('#final-elo-shorten-url').show();
+                $('#final-elo-shorten-url-span').text(data);
+                console.log(data);
+                console.log(textStatus);
+                console.log(jqXHR);
             }
 
             function handleFormError(jqXHR, textStatus, errorThrown){
